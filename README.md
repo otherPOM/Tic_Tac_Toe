@@ -23,3 +23,24 @@ In this stage, your program should:
 In this stage, we will assume that either X or O can start the game.
 
 You can choose whether to use a space or underscore _ to print empty cells.
+
+# Stage 4
+The program should work as follows:
+
+1. Get the 3x3 grid from the input as in the previous stages.
+2. Output this 3x3 grid as in the previous stages.
+3. Prompt the user to make a move.
+4. The user should input 2 numbers that represent the cell where they want to place their X. (the 9 symbols representing the field will be the first line of input, and the 2 coordinate numbers will be the second line of input)
+5. Analyze user input and show messages in the following situations:  
+`This cell is occupied!` Choose another one! if the cell is not empty.  
+`You should enter numbers!` if the user enters non-numeric symbols in the coordinates input.  
+`Coordinates should be from 1 to 3!` if the user enters coordinates outside the game grid.
+6. Update the grid to include the user's move and print the updated grid to the console.
+
+The program should also check the user’s input. If the input is unsuitable, the program should tell the user why their input was wrong, and prompt them to enter coordinates again.
+
+To summarize, you need to output the game grid based on the first line of input, and then ask the user to enter a move. Keep asking until the user enters coordinates that represent an empty cell on the grid, update the grid to include that move, and then output it to the console. You should output the field only 2 times: once before the user’s move, and once after the user has entered a legal move.
+
+*Do not delete the code* you already wrote that analyzes the game state; you will need it in the final step of this project.
+
+The project was changed. Now the coordinates start from the upper left corner. Look closely at the examples.

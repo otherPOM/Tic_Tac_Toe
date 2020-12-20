@@ -2,23 +2,40 @@ package tictactoe;
 
 public class Grid {
     private String cells;
-    private char[] grid;
+    private char[][] grid;
     private boolean xWon;
     private boolean oWon;
 
     public Grid(String cells) {
         this.cells = cells;
-        grid = cells.toCharArray();
+        grid = new char[][]{{cells.charAt(0), cells.charAt(1), cells.charAt(2)},
+                {cells.charAt(3), cells.charAt(4), cells.charAt(5)},
+                {cells.charAt(6), cells.charAt(7), cells.charAt(8)}};
         xWon = false;
         oWon = false;
     }
 
+    public boolean move(int x, int y) {
+        if (x > 3 || x < 1 || y > 3 || y < 1) {
+            System.out.println("Coordinates should be from 1 to 3!");
+            return  false;
+        }
+        if (grid[x - 1][y - 1] != '_') {
+            System.out.println("This cell is occupied! Choose another one!");
+            return false;
+        }
+
+
+
+        grid[x - 1][y - 1] = 'X';
+        return true;
+    }
+
     public void print() {
         System.out.println("---------");
-        for (int i = 0; i < 9; i += 3) {
-            System.out.println("| " + grid[i] +
-                    " " + grid[i + 1] +
-                    " " + grid[i + 2] + " |");
+        for (char[] chars : grid) {
+            System.out.println("| " + chars[0] + " " +
+                    chars[1] + " " + chars[2] + " |");
         }
         System.out.println("---------");
     }
@@ -48,37 +65,29 @@ public class Grid {
     }
 
     private void findWinner() {
-        for (int i = 0; i < 9; i += 3) {
-            if (grid[i] == grid[i + 1] && grid[i + 1] == grid[i + 2]) {
-                if (grid[i] == 'O') {
-                    oWon = true;
-                } else if (grid[i] == 'X') {
-                    xWon = true;
-                }
-            }
-        }
         for (int i = 0; i < 3; i++) {
-            if (grid[i] == grid[i + 3] && grid[i + 3] == grid[i + 6]) {
-                if (grid[i] == 'O') {
+            if (grid[i][0] == grid[i][1] && grid[i][1] == grid[i][2]) {
+                if (grid[i][0] == 'O') {
                     oWon = true;
-                } else if (grid[i] == 'X') {
+                } else if (grid[i][0] == 'X') {
                     xWon = true;
                 }
             }
-        }
-        if (grid[0] == grid[4] && grid[4] == grid[8]) {
-            if (grid[0] == 'O') {
-                oWon = true;
-            } else if (grid[0] == 'X') {
-                xWon = true;
+            if (grid[0][i] == grid[1][i] && grid[1][i] == grid[2][i]) {
+                if (grid[0][i] == 'O') {
+                    oWon = true;
+                } else if (grid[0][i] == 'X') {
+                    xWon = true;
+                }
             }
-        }
-        if (grid[2] == grid[4] && grid[4] == grid[6]) {
-            if (grid[2] == 'O') {
-                oWon = true;
-            } else if (grid[2] == 'X') {
-                xWon = true;
-            };
+            if ((grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2]) ||
+                    (grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0])) {
+                if (grid[1][1] == 'O') {
+                    oWon = true;
+                } else if (grid[1][1] == 'X') {
+                    xWon = true;
+                }
+            }
         }
     }
 }
