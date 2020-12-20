@@ -15,20 +15,12 @@ public class Grid {
         oWon = false;
     }
 
-    public boolean move(int x, int y) {
-        if (x > 3 || x < 1 || y > 3 || y < 1) {
-            System.out.println("Coordinates should be from 1 to 3!");
-            return  false;
-        }
-        if (grid[x - 1][y - 1] != '_') {
-            System.out.println("This cell is occupied! Choose another one!");
-            return false;
-        }
+    public void move(int x, int y, char c) {
+        grid[x - 1][y - 1] = c;
+    }
 
-
-
-        grid[x - 1][y - 1] = 'X';
-        return true;
+    public boolean isOccupied(int x, int y) {
+        return grid[x - 1][y - 1] != '_';
     }
 
     public void print() {

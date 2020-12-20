@@ -43,4 +43,14 @@ To summarize, you need to output the game grid based on the first line of input,
 
 *Do not delete the code* you already wrote that analyzes the game state; you will need it in the final step of this project.
 
-The project was changed. Now the coordinates start from the upper left corner. Look closely at the examples.
+## Stage 5
+
+In this stage, you should write a program that:
+
+1. Prints an empty grid at the beginning of the game.
+2. Creates a game loop where the program asks the user to enter the cell coordinates, analyzes the move for correctness and shows a grid with the changes if everything is okay.
+3. Ends the game when someone wins or there is a draw.
+
+You need to output the final result at the end of the game.
+
+Good luck!
